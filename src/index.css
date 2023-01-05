@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+
+:root {
+    --bg: #2c3e50;
+    --header-a: #7ea0c2;
+    --header-b: #202020;
+    --font: 'DM Mono', monospace;
+    --enter-animation: enter 900ms ease;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg);
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font);
+}
+
+
+/* Header menu */
+header {
+    background-color: var(--header-b);
+    width: 100%;
+    height: 6rem;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 13px #000;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: var(--enter-animation);
+}
+
+h4 {
+    margin: 1.5rem;
+    color: #7ea0c2;
+    width: 170px;
+}
+
+.new-game-btn {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 17px;
+    margin: 1.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    position: relative;
+
+    overflow: hidden;
+    background-color: var(--header-a);
+    color: var(--header-a);
+    border: 2px var(--header-a) solid;
+    z-index: 1;
+    transition: all .3s ease-in-out;
+
+}
+
+.new-game-btn::before {
+    content: '';
+    position: absolute;
+    background-color: var(--header-b);
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    transform: scale(1.5);
+    transition: all .3s ease-in-out;
+
+}
+
+
+.new-game-btn:hover {
+    color: var(--header-b);
+}
+
+.new-game-btn:hover::before {
+    transform: scale(0);
+}
+
+
+/* Game Buttons */
+.game {
+    display: grid;
+    gap: 3rem;
+    margin: 3rem auto;
+    justify-content: center;
+    grid-template-columns: auto auto;
+}
+
+.red-pressed,
+.green-pressed,
+.blue-pressed,
+.yellow-pressed,
+.red,
+.green,
+.blue,
+.yellow {
+    cursor: pointer;
+    height: 225px;
+    width: 225px;
+    border: none;
+    border-radius: 15px;
+    animation: var(--enter-animation);
+}
+
+.red {
+    background-color: red;
+}
+
+.red-pressed {
+    background-color: red;
+    box-shadow: 0px 0px 40px 12px red;
+}
+
+.green {
+    background-color: green;
+}
+
+.green-pressed {
+    background-color: green;
+    box-shadow: 0px 0px 40px 12px green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.blue-pressed {
+    background-color: blue;
+    box-shadow: 0px 0px 40px 12px blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.yellow-pressed {
+    background-color: yellow;
+    box-shadow: 0px 0px 40px 12px yellow;
+}
+
+
+/* Game Over */
+.gameOver,
+.playing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    z-index: 2;
+    backdrop-filter: blur(15px);
+}
+
+.gameOver {
+    display: grid;
+}
+
+.playing {
+    display: none;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    body {
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 6rem;
+    }
+
+    header {
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+        position: fixed;
+    }
+
+    .red-pressed,
+    .green-pressed,
+    .blue-pressed,
+    .yellow-pressed,
+    .red,
+    .green,
+    .blue,
+    .yellow {
+        width: 30vw;
+        height: 30vw;
+    }
+}
